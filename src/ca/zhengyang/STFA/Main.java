@@ -5,9 +5,11 @@ import java.util.List;
 public class Main {
 
 	public static void main(String[] args) {
-		FriendsBuySellAlert friendsBuySellAlert = new FriendsBuySellAlert("3");
+		FriendsBuySellAlert friendsBuySellAlert = new FriendsBuySellAlert("4");
 		List<String> rankedAlerts = friendsBuySellAlert.produceRankedAlerts();
-		System.out.println(rankedAlerts);
+		for (String alerts : rankedAlerts) {
+			System.out.println(alerts);
+		}
 	}
 
 }
