@@ -4,15 +4,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-
-import javax.swing.text.html.parser.Entity;
 
 public class FriendsBuySellAlert {
 	private String userId;
@@ -86,7 +83,13 @@ public class FriendsBuySellAlert {
 		return rankedAlerts;
 	}
 
-	// Calculate how many transactions on each ticker processed by friends
+	/**
+	 * Receive the list of friends transactions in the format e.g., "1/GOOG,2/YHOO,-3/",
+	 * return friends buy/sell alert without order.
+	 * 
+	 * @param listsOfTrans
+	 * @return rawAlerts
+	 */
 	public Map<String, Integer> processBuySellTrans(List<String> listOfTrans) {
 		if (listOfTrans.size() <= 0) {
 			return null;
@@ -117,6 +120,13 @@ public class FriendsBuySellAlert {
 		return alerts;
 	}
 
+	/**
+	 * Load our friends' IDs and all friend transactions, hence generate a list of string 
+	 * in the format e.g., "1/GOOG,2/YHOO,-3/".
+	 * 
+	 * @param friends' IDs
+	 * @return friendTransList
+	 */
 	public List<String> getPastWeekFriendTransactions(List<String> friendIds) {
 		List<String> friendTransList = new ArrayList<String>();
 		Date today = new Date();
